@@ -6,7 +6,6 @@ const connectionPromise = connect(DB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 } as ConnectOptions);
-
 connectionPromise
   .then(() => {
     console.log("Connection Success....");
