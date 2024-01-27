@@ -4,7 +4,7 @@ import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import compression from "compression";
 import cors from "cors";
-import databaseConnection from "../Database/connection";
+import databaseConnection from "./Database/connection";
 
 databaseConnection
   .then(() => {
