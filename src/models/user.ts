@@ -5,7 +5,7 @@ const Login_Ts = new mongoose.Schema({
     type: String,
     required: true,
   },
-  last_name: {
+  last_Name: {
     type: String,
     required: true,
   },
@@ -14,23 +14,12 @@ const Login_Ts = new mongoose.Schema({
     required: true,
   },
   phone: {
-    type: Number,
+    type: String,
     required: true,
   },
-  authentication: {
-    password: {
-      type: String,
-      required: true,
-      select: false,
-    },
-    salt: {
-      type: String,
-      select: false,
-    },
-    sessionToken: {
-      type: String,
-      select: false,
-    },
+  password: {
+    type: String,
+    required: true,
   },
 });
 
