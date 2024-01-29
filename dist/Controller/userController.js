@@ -5,8 +5,15 @@ class UserController {
     // for getting the first login page
     getLogin = (req, res) => {
         try {
+            let user = req.session.user;
+            console.log(user);
             let message = null;
-            res.render("login", { message });
+            if (user !== undefined && user !== null) {
+                res.render("home");
+            }
+            else {
+                res.render("login", { message });
+            }
         }
         catch (error) {
             console.log(error);
@@ -52,23 +59,38 @@ class UserController {
     //posting the home page
     postHome = async (req, res) => {
         try {
-            let message;
             const userDetail = await user_1.UserModel.findOne({ email: req.body.email });
             if (userDetail &&
                 userDetail.email === req.body.email &&
                 userDetail.password === req.body.password) {
                 req.session.user = userDetail.email;
-                // console.log(req.session.user);
                 res.render("home");
             }
             else {
-                message = "Invalid credentials";
+                let message = "Invalid credentials";
                 res.render("login", { message });
             }
         }
         catch (error) {
             console.log(error);
             res.redirect("/");
+        }
+    };
+    // controller for logout
+    logoutHome = async (req, res) => {
+        try {
+            req.session.destroy((err) => {
+                if (err) {
+                    console.log("Error while deleting the session");
+                }
+                else {
+                    console.log("session destroyed successfully");
+                    res.redirect("/");
+                }
+            });
+        }
+        catch (error) {
+            console.error("error while removing the session", error);
         }
     };
 }

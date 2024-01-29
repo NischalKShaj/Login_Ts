@@ -8,6 +8,7 @@ import path from "path";
 import session from "express-session";
 import databaseConnection from "./Database/connection";
 import userRoutes from "./routes/userRoutes";
+import { Request, Response, NextFunction } from "express";
 
 databaseConnection
   .then(() => {
@@ -26,14 +27,20 @@ app.set("view engine", "ejs");
 // setting the public folder
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use(
-  cors({
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     credentials: true,
+//   })
+// );
 
-app.use(compression());
-app.use(cookieParser());
+// app.use(compression());
+// app.use(cookieParser());
+
+// Set up caching middleware
+app.use((req: Request, res: Response, next: NextFunction) => {
+  res.set("Cache-Control", "no-store");
+  next();
+});
 
 // Use body-parser middleware for URL-encoded data
 app.use(bodyParser.urlencoded({ extended: true }));
