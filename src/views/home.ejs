@@ -1,66 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(to right, #ff9a9e, #fad0c4);
-        /* Add any other background styles or images as needed */
-      }
-
-      .card {
-        background-color: rgba(255, 255, 255, 0.8);
-        border-radius: 10px;
-        padding: 20px;
-        text-align: center;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      }
-
-      h1 {
-        color: #333;
-      }
-
-      .logout-btn {
-        background-color: #3498db;
-        color: #fff;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-        margin-top: 20px;
-      }
-    </style>
-    <title>Welcome</title>
-  </head>
-  <body>
-    <div class="card">
-      <h1>Welcome to Our Website!</h1>
-      <p>Feel free to explore and enjoy your time here.</p>
-      <button class="logout-btn" id="logoutButton" >Logout</button>
-    </div>
-    <script>
-      const logoutButton = document.querySelector("#logoutButton");
-
-      logoutButton.addEventListener("click", () => {
-        fetch("/logout", {
-          method: "POST",
-        }).then((res) => {
-          if (res.status === 200) {
-            console.log(res.status);
-            window.location.href = "http://localhost:3000";
-          } else {
-            console.log("erroro in deleteing");
-          }
-        });
-      });
-    </script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    
+</body>
 </html>
