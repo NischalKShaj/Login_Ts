@@ -38,6 +38,11 @@ app.use((0, express_session_1.default)({
     resave: false,
     saveUninitialized: true,
 }));
+// Set up caching middleware
+app.use((req, res, next) => {
+    res.set("Cache-Control", "no-store");
+    next();
+});
 app.use("/", userRoutes_1.default);
 app.listen(3000, () => {
     console.log("server running on http://localhost:3000/");

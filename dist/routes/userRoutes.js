@@ -7,8 +7,10 @@ const express_1 = __importDefault(require("express"));
 const userController_1 = __importDefault(require("../Controller/userController"));
 const router = express_1.default.Router();
 router.get("/", userController_1.default.getLogin);
+router.post("/logout", userController_1.default.logoutHome);
 router.post("/login", userController_1.default.postLogin);
 router.get("/signup", userController_1.default.getSignUp);
 router.post("/home", userController_1.default.postHome);
+router.get("/home", userController_1.default.getLogin);
 exports.default = router;
 //# sourceMappingURL=userRoutes.js.map
